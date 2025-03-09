@@ -1,7 +1,13 @@
-from flask import Flask
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-@app.route("/")
-def home_view():
-		return "<h1>Welcome to Geeks for Geeks</h1>"
+@app.route('https://web-production-2b055.up.railway.app/hello', methods=['POST'])
+def hello():
+    data = request.json
+    if data and data.get('message') == 'hello':
+        return jsonify({'response': 'world'})
+    return jsonify({'response': 'Invalid request'}), 400
+
+if __name__ == '__main__':
+    app.run(debug=True)
