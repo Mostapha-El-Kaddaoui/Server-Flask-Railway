@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-@app.route('https://web-production-2b055.up.railway.app/hello', methods=['POST'])
+@app.route('/hello', methods=['POST'])
 def hello():
     data = request.json
     if data and data.get('message') == 'hello':
