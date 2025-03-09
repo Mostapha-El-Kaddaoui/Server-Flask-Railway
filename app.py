@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-@app.route('/phone-call', methods=['POST'])
+@app.route('/phonecall', methods=['POST'])
 def PhoneCall():
     data = request.json
     if data and data.get('message') == 'hello':
