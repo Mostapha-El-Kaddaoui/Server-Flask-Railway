@@ -11,7 +11,7 @@ app = Flask(__name__)
 def PhoneCall():
     try:
         # Load the image
-        url = "/home/kalli/Desktop/PROJECTSWAI/DETR/image.jpg"
+        url = "https://github.com/Mostapha-El-Kaddaoui/Server-Flask-Railway/blob/main/compressed_image.jpg"
         image = Image.open(url)
 
         # Initialize the processor and model
