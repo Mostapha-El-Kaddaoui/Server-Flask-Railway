@@ -12,7 +12,7 @@ def PhoneCall():
     try:
         # Load the image
         url = "https://github.com/Mostapha-El-Kaddaoui/Server-Flask-Railway/blob/main/compressed_image.jpg"
-        image = Image.open(url)
+        image = Image.open(BytesIO(requests.get(url).content))
 
         # Initialize the processor and model
         processor = DetrImageProcessor.from_pretrained("facebook/detr-resnet-50", revision="no_timm")
