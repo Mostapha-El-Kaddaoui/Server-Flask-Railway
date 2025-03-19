@@ -10,4 +10,7 @@ MarkupSafe==3.0.2
 requests==2.32.3
 urllib3==2.3.0
 Werkzeug==3.1.3
-gunicorn==21.2.0 
+gunicorn==21.2.0
+transformers==4.30.0  # Add this
+torch==2.1.0  # Add this (adjust version based on your system's compatibility)
+Pillow==9.5.0  # Add this
