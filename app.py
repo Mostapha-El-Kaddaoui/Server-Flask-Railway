@@ -1,15 +1,19 @@
 from flask import Flask, jsonify, request
-from transformers import DetrImageProcessor, DetrForObjectDetection
+#from transformers import DetrImageProcessor, DetrForObjectDetection
 import torch
 from PIL import Image
 import requests
 from io import BytesIO  # Import BytesIO for image content handling
 import time
+from transformers import AutoImageProcessor, AutoModelForObjectDetection
+
+processor = AutoImageProcessor.from_pretrained("facebook/detr-resnet-50")
+model = AutoModelForObjectDetection.from_pretrained("facebook/detr-resnet-50")
 
 app = Flask(__name__)
 
-processor = DetrImageProcessor.from_pretrained("facebook/detr-resnet-50", revision="no_timm")
-model = DetrForObjectDetection.from_pretrained("facebook/detr-resnet-50", revision="no_timm")
+#processor = DetrImageProcessor.from_pretrained("facebook/detr-resnet-50", revision="no_timm")
+#model = DetrForObjectDetection.from_pretrained("facebook/detr-resnet-50", revision="no_timm")
 
 
 
