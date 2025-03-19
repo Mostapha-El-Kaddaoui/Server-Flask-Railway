@@ -15,29 +15,29 @@ def PhoneCall():
         image = Image.open(requests.get(url, stream=True).raw)  # Ensure to use BytesIO for image content
         
         # Initialize the processor and model
-        processor = DetrImageProcessor.from_pretrained("facebook/detr-resnet-50", revision="no_timm")
-        model = DetrForObjectDetection.from_pretrained("facebook/detr-resnet-50", revision="no_timm")
+        #processor = DetrImageProcessor.from_pretrained("facebook/detr-resnet-50", revision="no_timm")
+        #model = DetrForObjectDetection.from_pretrained("facebook/detr-resnet-50", revision="no_timm")
         
         # Process the image
-        inputs = processor(images=image, return_tensors="pt")
-        outputs = model(**inputs)
+        #inputs = processor(images=image, return_tensors="pt")
+        #outputs = model(**inputs)
         
         # Resize the image to match model's expected input
-        target_sizes = torch.tensor([image.size[::-1]])
-        results = processor.post_process_object_detection(outputs, target_sizes=target_sizes, threshold=0.9)[0]
+        #target_sizes = torch.tensor([image.size[::-1]])
+        #results = processor.post_process_object_detection(outputs, target_sizes=target_sizes, threshold=0.9)[0]
 
         # Extract detected objects
-        Objects = []
-        for score, label, box in zip(results["scores"], results["labels"], results["boxes"]):
-            box = [round(i, 2) for i in box.tolist()]
-            Objects.append(model.config.id2label[label.item()])
+        #Objects = []
+        #for score, label, box in zip(results["scores"], results["labels"], results["boxes"]):
+         #   box = [round(i, 2) for i in box.tolist()]
+          #  Objects.append(model.config.id2label[label.item()])
         
-        print(Objects)  # Optionally print the detected objects
+        #print(Objects)  # Optionally print the detected objects
 
         # Check the request data
         data = request.json
         if data and data.get('message') == 'hello':
-            return jsonify(Objects)  # Use jsonify instead of json.dumps
+            return jsonify({'good': 'good'})  # Use jsonify instead of json.dumps
         else:
             return jsonify({'error': 'Invalid request'}), 400
 
